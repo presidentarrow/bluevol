@@ -1,10 +1,4 @@
-from blue_gui import BlueWindow
-import gi
-gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk
+from blue_gui import BlueBuilder
 
 if __name__ == "__main__":
-    win = BlueWindow()
-    win.connect("destroy", Gtk.main_quit)
-    win.show_all()
-    Gtk.main()
+    BlueBuilder().show()
