@@ -12,7 +12,7 @@ logging.basicConfig(level = logging.INFO, format='%(asctime)s - %(levelname)s - 
 
 class BlueWindow(Gtk.Window):
     def __init__(self):
-        devices = blue_utils.get_connected_devices(audio_only=False)
+        devices = blue_utils.get_connected_devices(audio_only=True)
         self.blue_device = None
         Gtk.Window.__init__(self, title="bluevol v0.1")
         self.set_border_width(10)
@@ -37,7 +37,7 @@ class BlueWindow(Gtk.Window):
         self.box.pack_start(self.vol_up_button, True, True, 0)
 
         self.vol_down_button = Gtk.Button(label="vol-")
-        self.vol_down_button.connect("clicked", self.on_vol_up_button_clicked)
+        self.vol_down_button.connect("clicked", self.on_vol_down_button_clicked)
         self.box.pack_start(self.vol_down_button, True, True, 0)
 
     def on_vol_up_button_clicked(self, widget):
@@ -58,10 +58,9 @@ class BlueWindow(Gtk.Window):
         tree_iter = combo.get_active_iter()
         if tree_iter is not None:
             model = combo.get_model()
-            device_name = model[tree_iter][0]
             device_path = model[tree_iter][1]
-            logging.info("selected device: {} {}".format(device_name,device_path))
             self.blue_device = Bluedevice(device_path)
+            logging.info("selected device: {} {}".format(self.blue_device.name,self.blue_device.path))
 
 if __name__ == "__main__":
 

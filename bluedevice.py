@@ -7,6 +7,7 @@ class Bluedevice:
         bus = pydbus.SystemBus()
         #bus.get('org.bluez', '/org/bluez/hci0/dev_38_18_4C_0E_05_E0')
         self.dev = bus.get('org.bluez', device_path)
+        self.path = device_path
         self.address = self.dev.Address
         self.device_class = self.dev.Class
         self.name = self.dev.Name
