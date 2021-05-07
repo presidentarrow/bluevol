@@ -22,3 +22,7 @@ Clone and build:<br/>
 <code>cd bluevol</code>
 <br/>
 <code>python -m build</code>
+
+Demo:
+
+![Demo](out/bluevol_demo.gif)
