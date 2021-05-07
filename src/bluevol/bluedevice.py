@@ -1,6 +1,6 @@
 import pydbus
 import logging
-import blue_utils
+from bluevol import blue_utils
 
 class Bluedevice:
     def __init__(self, device_path):
